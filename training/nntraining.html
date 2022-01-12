@@ -1,0 +1,354 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Training Settings" href="trainsettings.html" /><link rel="prev" title="Training" href="index.html" />
+
+    <meta name="generator" content="sphinx-4.2.0, furo 2022.01.02"/>
+        <title>Neural Network Training - MIA documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">MIA  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">MIA  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/intro.html">MIA: Microscopic Image Analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/cite.html">How to Cite MIA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/acknowledge.html">Acknowledgement</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gettingstarted/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gettingstarted/quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gettingstarted/ui.html">The User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gettingstarted/settings.html">Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Applications</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../applications/classification.html">Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/segmentation.html">Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications/objectdetection.html">Object Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Training</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Neural Network Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trainsettings.html">Training Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.html">Augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trainplot.html">Train Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../prediction/index.html">Prediction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../postprocessing/index.html">Post Processing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../postprocessing/postprocessing.html">Postprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../postprocessing/tracking.html">Tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../results/index.html">Results</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="neural-network-training">
+<h1>Neural Network Training<a class="headerlink" href="#neural-network-training" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This manual is not intended as an introduction to deep learning, but to explain the functionality of MIA. For an introduction, please use the plethora of tutorials, books, original literature or other sources on deep learning.</p>
+</div>
+<p>The training of a neural network is the essential prerequisite to use the network as predictor.</p>
+<p>Simply put, a neural network is trained in a supervised manner by reducing the error between the network output and the ground truth, resulting in a change in the network weights so that the network would predict an output that resembles the ground truth.</p>
+<p>The image labels (=ground truth) for the network training are different for each supported application (see <a class="reference internal" href="../applications/index.html"><span class="doc">Applications</span></a>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>The question of how many labels are needed to train a neural network is not easy to answer, as it depends on the difficulty of the task and the error that can be tolerated as a result.</p></li>
+<li><p>An iterative training process is recommended:</p>
+<ul>
+<li><p>Label some images as training images</p></li>
+<li><p>Train a neural network with the training images</p></li>
+<li><p>Predict some test images (that are not included in the training images)</p></li>
+<li><p>Correct/Relabel the predicted images and include them in the training set</p></li>
+<li><p>Retrain</p></li>
+<li><p>Repeat until results are sufficient</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="the-training-window">
+<h2>The Training WIndow<a class="headerlink" href="#the-training-window" title="Permalink to this headline">¶</a></h2>
+<p>The Training Window can be openend by pressing <a class="inline-icon reference internal" href="../_images/train.png"><img alt="train" class="inline-icon" src="../_images/train.png" style="width: 16px; height: 16px;"/></a> <strong>Train Model</strong>.</p>
+<figure class="align-center" id="id1">
+<img alt="../_images/training.png" class="shadow-image" src="../_images/training.png"/>
+<figcaption>
+<p><span class="caption-text">The Training Window</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="the-deep-learning-model">
+<h3>The Deep Learning Model<a class="headerlink" href="#the-deep-learning-model" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Deep Learning Architecture</strong> and the <strong>Model Backbone</strong> are important choices that highly define training time and capacity. Each application uses individual models, so please refer to <a class="reference internal" href="../applications/index.html"><span class="doc">Applications</span></a> for details.</p>
+<p>By checking <strong>Pretrained Net</strong>, weights from a neural network trained on imagenet data set are used. Using pretrained weights might decrease the training time and data needed for convergence. Some paramters are fixed (e.g. input channels or preprocessing) when using a pretrained network.</p>
+</section>
+<section id="training-parameter">
+<h3>Training Parameter<a class="headerlink" href="#training-parameter" title="Permalink to this headline">¶</a></h3>
+<p><strong>Classes</strong> shows the number of different possible classes of the neural network output. Classes can be defined in the <a class="reference internal" href="../gettingstarted/ui.html#classes"><span class="std std-ref">class menu</span></a>.</p>
+<p>You can choose between <strong>Color</strong> and <strong>Mono</strong>, for color or monochromatic input images, respectively. For a mixed data set of monochrome and color images, select Color, otherwise all color images will be converted to grayscale, resulting in data loss.</p>
+<p>The <strong>Batch Size</strong> specifies the number of images per batch that are processed during a single training step of stochastic gradient decent.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Reduce batch size if (gpu-)memory is insufficient</p>
+</div>
+<p>The <strong>Epochs</strong> sets how often all training images are used to train the network.</p>
+<p>The <strong>Learning Rate</strong> is one of the most important hyperparameters during neural network training and defines the step size during loss function optimization. In <a class="reference internal" href="trainsettings.html"><span class="doc">Training Settings</span></a> the learning rate can be customized during training.</p>
+<p>The <strong>Down Scaling</strong> can be set to a value between 0 and 1, resulting in each input image being reduced by this factor before being fed into the neural network during training and inference.</p>
+<p>Press <a class="inline-icon reference internal" href="../_images/settings.png"><img alt="settings" class="inline-icon" src="../_images/settings.png" style="width: 16px; height: 16px;"/></a> <strong>Application_Name</strong> to open the settings specific for that application.</p>
+<p>Press <a class="inline-icon reference internal" href="../_images/settings.png"><img alt="settings" class="inline-icon" src="../_images/settings.png" style="width: 16px; height: 16px;"/></a> <strong>Settings</strong> to open deep learning <a class="reference internal" href="trainsettings.html"><span class="doc">settings</span></a>.</p>
+<p>Press <a class="inline-icon reference internal" href="../_images/augmentation.png"><img alt="augmentation" class="inline-icon" src="../_images/augmentation.png" style="width: 16px; height: 16px;"/></a> <strong>Augmentations</strong> to open the <a class="reference internal" href="augmentation.html"><span class="doc">augmentation</span></a> settings.</p>
+<p>To finally start the training  press <a class="inline-icon reference internal" href="../_images/train.png"><img alt="train" class="inline-icon" src="../_images/train.png" style="width: 16px; height: 16px;"/></a> <strong>Start Training</strong> button. After starting the training the <a class="reference internal" href="trainplot.html"><span class="doc">Train Data</span></a> window is opened.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="trainsettings.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Training Settings</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Training</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Nils Körber |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="../_sources/training/nntraining.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Neural Network Training</a><ul>
+<li><a class="reference internal" href="#the-training-window">The Training WIndow</a><ul>
+<li><a class="reference internal" href="#the-deep-learning-model">The Deep Learning Model</a></li>
+<li><a class="reference internal" href="#training-parameter">Training Parameter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>
