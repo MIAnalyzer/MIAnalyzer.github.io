@@ -1,15 +1,15 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Augmentation" href="augmentation.html" /><link rel="prev" title="Neural Network Training" href="nntraining.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
+    <!-- Generated with Sphinx 7.0.1 and Furo 2023.05.20 -->
         <title>Training Settings - MIA documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -20,38 +20,38 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" />
-      <line x1="4" y1="6" x2="20" y2="6" />
-      <line x1="10" y1="12" x2="20" y2="12" />
-      <line x1="6" y1="18" x2="20" y2="18" />
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
     </svg>
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -60,14 +60,14 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </symbol>
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -82,7 +82,7 @@
   </symbol>
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
@@ -90,7 +90,7 @@
   </symbol>
   <symbol id="svg-sun-half" viewBox="0 0 24 24">
     <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
@@ -152,33 +152,33 @@
   <span class="sidebar-brand-text">MIA  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Introduction</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/intro.html">MIA: Microscopic Image Analyzer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/cite.html">How to cite MIA?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/acknowledge.html">Acknowledgement</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../gettingstarted/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gettingstarted/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Getting Started</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../gettingstarted/quickstart.html">Quickstart Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gettingstarted/ui.html">The User Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gettingstarted/settings.html">Settings</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Applications</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../applications/index.html">Applications</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Applications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../applications/classification.html">Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/segmentation.html">Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications/objectdetection.html">Object Detection</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Training</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Training</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nntraining.html">Neural Network Training</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Training Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="augmentation.html">Augmentation</a></li>
@@ -186,7 +186,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../prediction/index.html">Prediction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../postprocessing/index.html">Post Processing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../postprocessing/index.html">Post Processing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Post Processing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../postprocessing/postprocessing.html">Postprocessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../postprocessing/tracking.html">Tracking</a></li>
 </ul>
@@ -196,6 +196,7 @@
 
 </div>
 </div>
+
       </div>
       
     </div>
@@ -203,8 +204,15 @@
   <div class="main">
     <div class="content">
       <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -219,19 +227,19 @@
         </div>
         <article role="main">
           <section id="training-settings">
-<h1>Training Settings<a class="headerlink" href="#training-settings" title="Permalink to this headline">¶</a></h1>
-<p>To open the Training Settings press <a class="inline-icon reference internal" href="../_images/settings.png"><img alt="settings" class="inline-icon" src="../_images/settings.png" style="width: 16px; height: 16px;"/></a> <strong>Settings</strong> in the <a class="reference internal" href="nntraining.html"><span class="doc">Training Window</span></a>.</p>
+<h1>Training Settings<a class="headerlink" href="#training-settings" title="Permalink to this heading">#</a></h1>
+<p>To open the Training Settings press <a class="inline-icon reference internal" href="../_images/settings.png"><img alt="settings" class="inline-icon" src="../_images/settings.png" style="width: 16px; height: 16px;" /></a> <strong>Settings</strong> in the <a class="reference internal" href="nntraining.html"><span class="doc">Training Window</span></a>.</p>
 <figure class="align-center" id="id7">
-<img alt="../_images/trainsettings.png" class="shadow-image" src="../_images/trainsettings.png"/>
+<img alt="../_images/trainsettings.png" class="shadow-image" src="../_images/trainsettings.png" />
 <figcaption>
-<p><span class="caption-text">The Training Setting Window</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">The Training Setting Window</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Check <strong>Load Full Dataset</strong> to completely load the data in the memory. When only limited memory is available uncheck and the images are loaded dynamically during training which might decrease training speed.</p>
 <p>Choose a <strong>Preprocessing</strong> option to be performed with each image before training.</p>
 <p><strong>Predict an image every x epochs</strong> can be selected to make a prediction after the given epochs of the currently selected image. This option only applies if the <a class="reference internal" href="../gettingstarted/ui.html#folders"><span class="std std-ref">Test Folder</span></a> with a target image is selected.</p>
 <section id="class-weights">
-<h2>Class Weights<a class="headerlink" href="#class-weights" title="Permalink to this headline">¶</a></h2>
+<h2>Class Weights<a class="headerlink" href="#class-weights" title="Permalink to this heading">#</a></h2>
 <p><strong>Class Weighting</strong> can be chosen from 3 different options:</p>
 <ul class="simple">
 <li><p><strong>Disable Weighting</strong>: No class weighting is applied.</p></li>
@@ -246,24 +254,24 @@ In MIA different class balancing options exist: <em>class weighting</em>, <em>sp
 </div>
 </section>
 <section id="loss-metrics-optimizer">
-<h2>Loss, Metrics, Optimizer<a class="headerlink" href="#loss-metrics-optimizer" title="Permalink to this headline">¶</a></h2>
+<h2>Loss, Metrics, Optimizer<a class="headerlink" href="#loss-metrics-optimizer" title="Permalink to this heading">#</a></h2>
 <p>For losses and metrics please refer to <a class="reference internal" href="../applications/index.html"><span class="doc">Applications</span></a>, as losses and metrics differ depending on application.</p>
 <p>For optimizer different options exist:</p>
 <ul class="simple">
-<li><p>Adam - Adaptive momentum optimizer <a class="footnote-reference brackets" href="#adam" id="id1">1</a></p></li>
-<li><p>AdaMax - variant of Adam based on infinity norm <a class="footnote-reference brackets" href="#adam" id="id2">1</a></p></li>
-<li><p>Adadelta - adaptive learning rate per dimension <a class="footnote-reference brackets" href="#adadlt" id="id3">2</a></p></li>
-<li><p>AdaGrad - parameter specific learning rates <a class="footnote-reference brackets" href="#adagrad" id="id4">3</a></p></li>
-<li><p>SGD - stochastic gradient decent with momentum <a class="footnote-reference brackets" href="#sgd" id="id5">4</a></p></li>
+<li><p>Adam - Adaptive momentum optimizer <a class="footnote-reference brackets" href="#adam" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>AdaMax - variant of Adam based on infinity norm <a class="footnote-reference brackets" href="#adam" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>Adadelta - adaptive learning rate per dimension <a class="footnote-reference brackets" href="#adadlt" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
+<li><p>AdaGrad - parameter specific learning rates <a class="footnote-reference brackets" href="#adagrad" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></li>
+<li><p>SGD - stochastic gradient decent with momentum <a class="footnote-reference brackets" href="#sgd" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Adam optimizer is widely used for deep learning projects because of its capability of fast convergence. However less adaptive methods, like sgd, are for some tasks considered to generalize better <a class="footnote-reference brackets" href="#opt" id="id6">5</a>.
+<p>Adam optimizer is widely used for deep learning projects because of its capability of fast convergence. However less adaptive methods, like sgd, are for some tasks considered to generalize better <a class="footnote-reference brackets" href="#opt" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.
 Use Adam as a starting point, but consider to use plain sgd when having a well curated, big data set.</p>
 </div>
 </section>
 <section id="train-validation-split">
-<h2>Train / Validation Split<a class="headerlink" href="#train-validation-split" title="Permalink to this headline">¶</a></h2>
+<h2>Train / Validation Split<a class="headerlink" href="#train-validation-split" title="Permalink to this heading">#</a></h2>
 <p>It is common practice to split your training data in a training and validation set. The validation set is excluded from training and used to measure the model performance.
 Use the slider to set the train/validation split. The validation data is evaluated once every epoch. The larger the training set, the lower percentage needed for validation.</p>
 <div class="admonition note">
@@ -272,31 +280,37 @@ Use the slider to set the train/validation split. The validation data is evaluat
 </div>
 </section>
 <section id="learning-rate-schedule">
-<h2>Learning Rate Schedule<a class="headerlink" href="#learning-rate-schedule" title="Permalink to this headline">¶</a></h2>
+<h2>Learning Rate Schedule<a class="headerlink" href="#learning-rate-schedule" title="Permalink to this heading">#</a></h2>
 <p>For <strong>Learning Rate</strong> adaptation 3 options exist:</p>
 <ul class="simple">
 <li><p><strong>Constant</strong>: Use a constant learning rate throughout training.</p></li>
 <li><p><strong>on Plateau</strong>: The learning rate is reduced by the set factor if the loss remains constant for the set number of epochs.</p></li>
 <li><p><strong>Schedule</strong>: Set a learning rate schedule that reduces the learning rate by the reduction factor after every set epochs.</p></li>
 </ul>
-<hr class="docutils"/>
-<dl class="footnote brackets">
-<dt class="label" id="adam"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
-<dd><p>Kingma, D.P. and Ba, J., 2014. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980.</p>
-</dd>
-<dt class="label" id="adadlt"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p>Zeiler, M.D., 2012. Adadelta: an adaptive learning rate method. arXiv preprint arXiv:1212.5701.</p>
-</dd>
-<dt class="label" id="adagrad"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
-<dd><p>Duchi, J., Hazan, E. and Singer, Y., 2011. Adaptive subgradient methods for online learning and stochastic optimization. Journal of machine learning research, 12(7).</p>
-</dd>
-<dt class="label" id="sgd"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
-<dd><p>Sutskever, I., Martens, J., Dahl, G. and Hinton, G., 2013, May. On the importance of initialization and momentum in deep learning. In International conference on machine learning (pp. 1139-1147). PMLR.</p>
-</dd>
-<dt class="label" id="opt"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
-<dd><p>Wilson, A.C., Roelofs, R., Stern, M., Srebro, N. and Recht, B., 2017. The marginal value of adaptive gradient methods in machine learning. arXiv preprint arXiv:1705.08292.</p>
-</dd>
-</dl>
+<hr class="docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="adam" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>Kingma, D.P. and Ba, J., 2014. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980.</p>
+</aside>
+<aside class="footnote brackets" id="adadlt" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>Zeiler, M.D., 2012. Adadelta: an adaptive learning rate method. arXiv preprint arXiv:1212.5701.</p>
+</aside>
+<aside class="footnote brackets" id="adagrad" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>Duchi, J., Hazan, E. and Singer, Y., 2011. Adaptive subgradient methods for online learning and stochastic optimization. Journal of machine learning research, 12(7).</p>
+</aside>
+<aside class="footnote brackets" id="sgd" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>Sutskever, I., Martens, J., Dahl, G. and Hinton, G., 2013, May. On the importance of initialization and momentum in deep learning. In International conference on machine learning (pp. 1139-1147). PMLR.</p>
+</aside>
+<aside class="footnote brackets" id="opt" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<p>Wilson, A.C., Roelofs, R., Stern, M., Srebro, N. and Recht, B., 2017. The marginal value of adaptive gradient methods in machine learning. arXiv preprint arXiv:1705.08292.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -312,10 +326,10 @@ Use the slider to set the train/validation split. The validation data is evaluat
                 </div>
                 <div class="title">Augmentation</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="nntraining.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -326,15 +340,19 @@ Use the slider to set the train/validation split. The validation data is evaluat
               </div>
             </a>
         </div>
-
-        <div class="related-information">
-              Copyright &#169; 2022, Nils Körber |
-          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
-            | <a class="muted-link" href="../_sources/training/trainsettings.rst.txt"
-               rel="nofollow">
-              Show Source
-            </a>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Nils Körber
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
         </div>
         
       </footer>
@@ -345,7 +363,7 @@ Use the slider to set the train/validation split. The validation data is evaluat
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -368,9 +386,8 @@ Use the slider to set the train/validation split. The validation data is evaluat
     </aside>
   </div>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>
